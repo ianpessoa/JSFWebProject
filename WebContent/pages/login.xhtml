@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Templates/layout.xhtml">
+	<ui:define name="menu">
+		<ui:include src="/includes/menulogin.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<center>
+				<h:panelGroup>
+					<h:panelGrid columns="1">
+						<h:outputText value="Nome de Usuario" />
+						<h:inputText name="username" value="#{loginBean.username}" size="10" columns="10" />
+					</h:panelGrid>
+					<h:panelGrid columns="1">
+						<h:outputText value="Senha" />
+						<h:inputSecret value="#{loginBean.password}" name="pwd" size="10" columns="10" />
+					</h:panelGrid>
+				</h:panelGroup>
+			</center>
+			<h:panelGroup style="margin-left:55%;" columns="1">
+				<h:commandButton type="submit" action="#{loginBean.logar}" value="Log-in" />
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>
