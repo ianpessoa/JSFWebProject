@@ -24,7 +24,10 @@
 				</h:panelGroup>
 			</center>
 			<h:panelGroup style="margin-left:55%;" columns="1">
-				<h:commandButton type="submit" action="#{loginBean.logar}" value="Log-in" />
+				<h:commandButton binding="#{loginBean.buttonRegister}" action="#{loginBean.registrar}" value="Cadastrar" />
+			</h:panelGroup>
+			<h:panelGroup style="margin-left:55%;" columns="1">
+				<h:commandButton binding="#{loginBean.buttonLogin}" action="#{loginBean.logar}" value="Log-in" />
 			</h:panelGroup>
 		</h:form>
 	</ui:define>
