@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import main.java.entities.User;
 import main.java.model.dao.DAOFactory;
 import main.java.model.dao.UserDAO;
+import main.java.util.Util;
 
 @ManagedBean(name = "loginBean")
 @RequestScoped
@@ -65,6 +66,7 @@ public class LoginBean implements Serializable {
 			context.addMessage(buttonLogin.getClientId(context), message);
 			return false;
 		}
+		Util.setUser(user);
 		return true;
 	}
 

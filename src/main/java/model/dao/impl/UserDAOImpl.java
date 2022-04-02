@@ -75,9 +75,5 @@ public class UserDAOImpl implements UserDAO{
 		return user;
 		
 	}
-	
-	private User instantiateUser() {
-		return null;
-	}
 
 }
