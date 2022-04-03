@@ -30,11 +30,10 @@ public class Category implements Serializable {
 	
 	public Category(){}
 
-	public Category(Integer id, String name, List<Product> products) {
+	public Category(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.products = products;
 	}
 
 	public Integer getId() {
@@ -84,6 +83,11 @@ public class Category implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return id.toString();
 	}
 	
 }

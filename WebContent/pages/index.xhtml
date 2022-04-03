@@ -6,10 +6,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/Templates/layout.xhtml">
 	<ui:define name="menu">
-		<ui:include src="/includes/menu.xhtml" />
+		<ui:include src="#{indexBean.menu}" />
 	</ui:define>
-	
+
 	<ui:define name="conteudo">
-	
+		<div class="card">
+			<center>
+				<h:outputLabel>Gráfico</h:outputLabel>
+			</center>
+			<p:diagram value="#{indexBean.model}" style="height:400px"
+				styleClass="ui-widget-content" />
+		</div>
 	</ui:define>
 </ui:composition>

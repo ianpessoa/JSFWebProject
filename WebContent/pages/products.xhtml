@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Templates/layout.xhtml">
+	<ui:define name="menu">
+		<ui:include src="#{indexBean.menu}" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<script>
+			function showInsertProductPopup()
+			{
+			    window.open('./popups/insertproduct.xhtml','insertProductPopup',
+			    		'height=600,width=600');
+	
+			    return true;
+			}
+		</script>
+
+		<div class="card">
+			<div class="card">
+				<h:form>
+
+					<h:panelGroup columns="3">
+						<h:commandButton
+							onclick="showInsertProductPopup()" value="Inserir" />
+					</h:panelGroup>
+
+					<p:dataTable id="tbl" var="product"
+						value="#{productsBean.products}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+						paginator="true" rows="10" styleClass="p-mt-2">
+						<p:column>
+							<h:outputText value="Codigo: " />
+							<h:outputText value="#{product.id}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="Nome: " />
+							<h:outputText value="#{product.name}" />
+						</p:column>
+
+						<p:column styleClass="p-text-center">
+							<h:outputText value="Categoria: " />
+							<h:outputText value="#{product.category.name}" />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

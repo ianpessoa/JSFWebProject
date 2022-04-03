@@ -10,7 +10,7 @@
 			<p:growl id="messages" />
 
 			<p:menubar>
-				<p:submenu label="JSF System"/>
+				<p:menuitem binding="#{menuBean.buttonLogin}" action="#{menuBean.goToLogin}" value="JSF System"/>
 			</p:menubar>
 		</h:form>
 	</div>

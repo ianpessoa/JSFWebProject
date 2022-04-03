@@ -22,7 +22,7 @@ public class IndexBean implements Serializable {
 	
 	private DefaultDiagramModel model;
 
-    @PostConstruct
+	@PostConstruct
     public void init() {
         model = new DefaultDiagramModel();
         model.setMaxConnections(-1);

@@ -10,12 +10,18 @@
 			<p:growl id="messages" />
 
 			<p:menubar>
-				<p:submenu label="JSF System">
-					<p:menuitem value="Sair" icon="pi pi-fw pi-video" />
+				<p:menuitem binding="#{menuBean.buttonIndex}" action="#{menuBean.goToIndex}" value="JSF System" />
+				<p:menuitem binding="#{menuBean.buttonProducts}" action="#{menuBean.goToProducts}" value="Produtos" />
+				<p:submenu label="Movimentação">
+					<p:menuitem value="Entradas" />
+					<p:menuitem value="Saídas" />
 				</p:submenu>
-				<p:menuitem value = "Produtos" />
-				<p:menuitem value = "Vendas" />
-				<p:menuitem value = "Compras" />
+				<p:submenu label="#{menuBean.user.username}">
+					<p:menuitem binding="#{menuBean.buttonLogin}"
+						action="#{menuBean.goToLogin}" value="Sair"
+						icon="pi pi-fw pi-video" />
+				</p:submenu>
+
 			</p:menubar>
 		</h:form>
 	</div>

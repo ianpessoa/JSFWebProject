@@ -5,6 +5,14 @@
 	overflow: visible !important;
 }
 
-.ui-layout-north .ui-layout-unit-content{
+.ui-layout-north .ui-layout-unit-content {
 	overflow: visible !important;
+}
+
+.ui-diagram-element {
+	border: 0.1em dotted #d4e06b;
+	width: 14em;
+	height: 4em;
+	line-height: 4em;
+	text-align: center;
 }

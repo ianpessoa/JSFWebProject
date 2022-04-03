@@ -4,6 +4,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import main.java.model.dao.impl.CategoryDAOImpl;
+import main.java.model.dao.impl.ProductDAOImpl;
 import main.java.model.dao.impl.UserDAOImpl;
 
 public class DAOFactory {
@@ -16,5 +18,13 @@ public class DAOFactory {
 	
 	public static UserDAOImpl createUserDAO() {
 		return new UserDAOImpl();
+	}
+	
+	public static ProductDAOImpl createProductDAO() {
+		return new ProductDAOImpl();
+	}
+	
+	public static CategoryDAOImpl createCategoryDAO() {
+		return new CategoryDAOImpl();
 	}
 }

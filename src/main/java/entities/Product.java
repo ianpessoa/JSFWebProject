@@ -86,4 +86,8 @@ public class Product implements Serializable {
 		return true;
 	}
 	
+	public Product clone() {
+		return new Product(id,name,category);
+	}
+	
 }

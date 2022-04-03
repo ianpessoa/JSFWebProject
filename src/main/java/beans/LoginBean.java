@@ -3,6 +3,7 @@ package main.java.beans;
 import java.io.IOException;
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -10,8 +11,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import main.java.entities.User;
-import main.java.model.dao.DAOFactory;
-import main.java.model.dao.UserDAO;
+import main.java.services.UserService;
 import main.java.util.Util;
 
 @ManagedBean(name = "loginBean")
@@ -24,6 +24,13 @@ public class LoginBean implements Serializable {
 
 	private UIComponent buttonLogin;
 	private UIComponent buttonRegister;
+	
+	private UserService userService;
+	
+	@PostConstruct
+	public void init() {
+		userService = new UserService();
+	}
 
 	public void logar() {
 		if (processValues()) {
@@ -43,8 +50,7 @@ public class LoginBean implements Serializable {
 	}
 
 	private boolean validaDadosRecebidos() {
-		UserDAO userDAO = DAOFactory.createUserDAO();
-		User user = userDAO.findByUsername(username);
+		User user = userService.findByUsername(username);
 
 		if (username.trim().equals("") || password.trim().equals("")) {
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -71,7 +77,6 @@ public class LoginBean implements Serializable {
 	}
 
 	public void registrar() {
-		UserDAO userDAO = DAOFactory.createUserDAO();
 
 		if (username.trim().equals("") || password.trim().equals("")) {
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -79,7 +84,7 @@ public class LoginBean implements Serializable {
 			context.addMessage(buttonRegister.getClientId(context), message);
 		}
 
-		if (userDAO.findByUsername(username) != null) {
+		if (userService.findByUsername(username) != null) {
 			FacesContext context = FacesContext.getCurrentInstance();
 			FacesMessage message = new FacesMessage("Este nome de usuário já foi registrado.");
 			context.addMessage(buttonRegister.getClientId(context), message);
@@ -88,7 +93,7 @@ public class LoginBean implements Serializable {
 		else {
 			User user = new User(null, username, password);
 
-			userDAO.insert(user);
+			userService.insertUser(user);
 			try {
 				FacesContext.getCurrentInstance().getExternalContext()
 						.redirect("/JSFWebProject/faces/pages/login.xhtml");
